@@ -1,30 +1,51 @@
--- Create Active User Table
-CREATE TABLE active_user (
-  billing_id INT PRIMARY KEY NOT NULL,
-  first_name TEXT,
-  last_name TEXT,
-  username TEXT
-);
+/*
 
-CREATE TABLE billing_info (
-  billing_id INT PRIMARY KEY NOT NULL,
-  street_address TEXT,
-  state TEXT,
-  username TEXT
-);
+CREATE TABLE IF NOT EXISTS public.watches
+(
+    product_id text COLLATE pg_catalog."default",
+    product_parent integer,
+    product_title text COLLATE pg_catalog."default"
+)
 
-CREATE TABLE payment_info (
-  billing_id INT PRIMARY KEY NOT NULL,
-  cc_encrypted TEXT
-);
+CREATE TABLE IF NOT EXISTS public.customers
+(
+    customer_id integer,
+    customer_count bigint NOT NULL
+)
+
+
+CREATE TABLE IF NOT EXISTS public.reviews
+(
+    review_id text COLLATE pg_catalog."default",
+    customer_id integer,
+    product_id text COLLATE pg_catalog."default",
+    product_parent integer,
+    review_date timestamp without time zone
+)
+
+CREATE TABLE IF NOT EXISTS public.watches
+(
+    product_id text COLLATE pg_catalog."default",
+    product_parent integer,
+    product_title text COLLATE pg_catalog."default"
+)
+
+CREATE TABLE IF NOT EXISTS public.watches
+(
+    product_id text COLLATE pg_catalog."default",
+    product_parent integer,
+    product_title text COLLATE pg_catalog."default"
+)
+
+*/
+
+-- On my local PostgreSQL db I appended the customers from watches & outdoors into one table. I repeated that process for reviews.
 
 -- Query databse to check successful upload
-SELECT * FROM active_user;
+SELECT * FROM watches;
 
-SELECT * FROM billing_info;
+SELECT * FROM outdoors;
 
-SELECT * FROM payment_info;
+SELECT * FROM customers;
 
---drop table active_user; 
---drop table billing_info;
---drop table payment_info; 
+SELECT * FROM reviews;
